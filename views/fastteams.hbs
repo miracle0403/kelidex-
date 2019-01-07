@@ -1,0 +1,35 @@
+{{> mainh}}<br>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-2076057190616165",
+    enable_page_level_ads: true
+  });
+</script>
+<div class="container-fluid">
+      <div class= "bg bg-danger">
+      	 	 <div style= "text-align: center">
+      	 	 <h2 style= "color: navy"><b> TIME LEFT TO LAUNCH</b></h2>
+      	 	 	<b><h2 id= "count" style ="color: red"></h2></b>
+      	 	 	</div>
+      </div>
+ <div class="content-sec inner-sec">
+ <div class="row">
+ <div class="large-12 columns">
+ <h2>{{title}}</h2>
+ </div>
+ <div class="clearfix"></div>
+ {{#if fast}}
+ 	 {{#each fast}}
+ 	  <div class="large-6 medium-6 small-12 columns faq">
+ 	 	 <h3>{{full_name}}</h3>
+ 	 	 <p>Phone Number: {{code}}{{phone}}</p>
+ 	 	 <p>Email: {{email}}</p>
+ 	 	 <p>Number of referrals: {{amount}}</p>
+ 	 	 <p>Referral Link: <a href ="/register/{{username}} "> swiftrevolver.com/register/{{username}}</a></p>
+ 	 </div>
+	 {{/each}}
+ {{/if}}
+ </div>
+ </div>   
+{{> mainf}}

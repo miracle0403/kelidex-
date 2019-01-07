@@ -1,0 +1,125 @@
+insert into user_tree (sponsor, user, lft, rgt, number) values ('dfghjdkgshfds', 'firsttest', 1, 2, 0);
+insert into admin values(2);
+insert into user(sponsor, username, full_name, email, code, phone, password) values ('dfghjdkgshfds', 'firsttest', 'firsttest', 'ghf@jmhdf.co', 234, 234788959, 'dfgdhhjchvv');
+insert into news (subject, text) values('FREE FEEDER SLOT AVAILABLE!', 'Hello dear! We are pleased to inform you that as of today till 12pm on the launch of Swift Revolver, there is a contest for the highest recruiter! Asides from the referral bonus you will get, you will get your first free slot into the feeder matrix without paying. To qualify for this, Register then refer... See you at the top ...keep winning' );
+
+//get dashboard
+router.get('/dashboard', authentificationMiddleware(), function(req, res, next) {
+	var db = require('../db.js');
+	var currentUser = req.session.passport.user.user_id;
+	//admini( currentUser );
+	//get news important.
+	db.query( 'SELECT subject FROM news', function ( err, results, fields ){
+		if ( err ) throw err; 
+		//get the last one
+		var last = results.slice( -1 )[0];
+		var news = last.subject;
+	db.query( 'SELECT user FROM admin WHERE user = ?', [currentUser], function ( err, results, fields ){
+		if( err ) throw err;
+		if( results.length === 0 ){
+			db.query( 'SELECT username FROM user WHERE user_id = ?', [currentUser], function ( err, results, fields ){
+		if( err ) throw err;
+		var username = results[0].username; 
+		//check if the user has updated his profile
+		db.query( 'SELECT user FROM profile WHERE user = ?', [username], function ( err, results, fields ){
+			if( err ) throw err;
+			if( results.length === 0 ){
+				var error = 'Please update your profile to see your stats.';
+				res.render( 'dashboard', {title: 'DASHBOARD', error: error, news: news});
+			}else{
+				//check if the person has a paid plan.
+				db.query( 'SELECT user FROM feeder WHERE user = ?', [username], function ( err, results, fields ){
+					if( err ) throw err;
+					if (results.length === 0){
+						var message = 'You have not entered the matrix yet. Please enter the matrix';
+						var feedentrance = 0; 
+						var totalentrance = 0;
+						var feederearn = 0;
+						var feederbonus  = 0;
+						var total = 0;
+						res.render('dashboard', {title: 'DASHBOARD', feederearn: feederearn, total: total, feedentrance: feedentrance, totalentrance: totalentrance, noenter: message, news: news, feederbonus: feederbonus, message: message});
+					}else{ 
+						//check the number of times he has entered the feeder stage
+						db.query( 'SELECT number FROM user_tree WHERE user = ?', [username], function ( err, results, fields ){
+							if( err ) throw err;
+							var feedentrance = results[0].number;
+							var totalentrance = 0 + feedentrance;
+							//check if the user is receiving
+							db.query( 'SELECT * FROM feederpayment WHERE receiver = ? and (status  = ? or status = ?) ', [username, 'pending', 'uploaded'], function ( err, results, fields ){
+								if( err ) throw err;
+								if( results.length === 0 ){
+									var status = 'You do not have any  unconfirmed payment';
+									//check for paid paymets
+									db.query( 'SELECT * FROM feederpayment WHERE payer = ? and (status  = ? or status = ?) ', [username, 'pending', 'uploaded'], function ( err, results, fields ){
+										if( err ) throw err;
+										if ( results.length === 0 ){
+											var status = "You do not have any unconfirmed payment";
+											// check for earnings
+											db.query( 'SELECT sum(feeder) as feeder, sum(feederbonus) as  feederbonus FROM earnings WHERE user = ?', [username], function ( err, results, fields ){
+												if( err ) throw err;
+												if( results.length === 0 ){
+													var feederearn = 0;
+													var feederbonus = 0;
+													var total = 0;
+													var message  = "You have not earned yet";
+										// render it
+													res.render ('dashboard', {title: 'DASHBOARD', feederbonus: feederbonus, feederearn: feederearn, total: total, feedentrance: feedentrance,news: news,  totalentrance: totalentrance, noearn: status, message: message});
+									
+														}
+														else{
+															//get the values of the earnings.
+															var 	feederearn = results[0].feeder;
+															var 	feederbonus = results[0].feederbonus;
+															var total = feederbonus + feederearn;
+															// get the legs.
+															db.query( 'SELECT a, b, c  FROM feeder_tree WHERE user = ?', [username], function ( err, results, fields ){
+																if( err ) throw err;
+																var last = results.slice( -1 )[0];
+																var tree = {
+																	a: last.a,
+																	b: last.b,
+																	c: last.c
+																}
+																if( tree.a !== null && tree.b !== null && tree.c !== null  ){
+											var filled = "You have filled this cycle... please enter the matrix again";
+											res.render('dashboard', {title: 'DASHBOARD', feederearn: feederearn, feederbonus: feederbonus, total: total,news: news,  feedentrance: feedentrance, totalentrance: totalentrance, filled: filled});
+																}else{
+																	//render the host of them
+																	res.render('dashboard', {title: 'DASHBOARD', feederearn: feederearn, a: tree.a, b: tree.b, c: tree.c, total: total, feedentrance: feedentrance,news: news, feederbonus: feederbonus,  totalentrance: totalentrance, tree: tree});
+																}
+															});
+														}
+													});
+												}
+										else{
+											var payer = results;
+										}
+									});
+								}else{
+									//create variables for received payments.
+									var received = results;
+									//get the paid
+									db.query( 'SELECT * FROM feederpayment WHERE payer = ? and (status  = ? or status = ?) ', [username, 'pending', 'uploaded'], function ( err, results, fields ){
+										if( err ) throw err;
+										if( results.length === 0 ){
+							//what happens			//get the earnings
+										} 
+										else{
+											var payer = results;
+										}
+									});
+								}
+							});
+						});
+					}
+				});
+			}
+		});
+	});  
+		}
+		else{
+		}
+	});
+	});
+});
+	

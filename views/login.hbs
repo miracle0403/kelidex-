@@ -1,0 +1,40 @@
+{{> spageh}}
+{{#showErrors}}
+{{#errors}}
+  <div class="alert alert-danger">
+    {{.}}
+  </div>
+{{/errors}}
+{{/showErrors}}
+<br><br>
+         <div class="container"> 
+        <h4 style="text-align: center">{{title}}</h4><br><hr>
+     </div>
+     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-2076057190616165",
+    enable_page_level_ads: true
+  });
+</script>
+	   <form method ="POST" action ="/login">
+	  <div class="container-fluid"> 
+  <div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="username">username</label>
+    <input type="text" class="form-control" 
+id="username" name ="username" placeholder="Enter username" required />
+</div>
+<div class="form-group col-md-6">
+<label for="Password">Password</label>
+        <input type="password" class="form-control" 
+    id="Password" name ="password" placeholder="Password" required />
+    </div>
+    </div>
+    	<div class="form-group"> <button type="submit" class="btn 
+btn-primary">Submit</button> </form><br><br>
+<p>Forgot Password, Click <a href ="/passwordreset">here. </a>Don't have an account, <a href ="/register">register</a>.
+</p>
+	</div>
+    </div><hr>
+{{> spagef}}

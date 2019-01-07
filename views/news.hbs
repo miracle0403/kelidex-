@@ -1,0 +1,28 @@
+{{> spageh}}
+         <div class="container"> 
+        <h4 style="text-align: center">{{title}}</h4><br><hr>
+     </div>
+        <div class="container-fluid"> 
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-2076057190616165",
+    enable_page_level_ads: true
+  });
+</script>
+{{#if news}}
+{{#each news}}
+<h3 style= "text-align: center"><b> {{subject}}</b></h3>
+<p style ="text-align: justify">{{{text}}}</p><br>
+<p style ="text-align: justify"><small>{{date}}</small></p><br>
+{{/each}}
+{{/if}}
+</div>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-2076057190616165",
+    enable_page_level_ads: true
+  });
+</script>
+{{> spagef}}

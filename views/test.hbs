@@ -1,0 +1,49 @@
+{{> spageh}}
+{{> nav}}
+
+<div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Transactions</h4>
+                                
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <th>ID</th>
+                                    	<th>Username</th>
+                                    	<th>Balance b/f</th>
+                                    	<th>Credit</th>
+                                    	<th>Debit</th>
+                                    	  	<th>Description</th>
+                                    	  	  	<th>Debit Teller</th>
+                                    	  	  	 	<th>Balance</th>
+                                    	  	  	  	<th>Date</th>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        {{#each user}}
+<tr>
+
+                                        	<td>{{id}}</td>
+                                        	<td> {{user}}</td>
+                                        	<td>{{balance_bf}}</td>
+                                        	<td>{{credit}}</td>
+                                        	<td>{{debit}}</td>
+                                        	<td>{{description}}</td>
+                                        	<td>{{debit_receipt}}</td>
+                                        	<td>{{balance}}</td>
+                                        	<td>{{date}}</td>
+                                        </tr>
+{{/each}}
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+
+{{> spagef}}

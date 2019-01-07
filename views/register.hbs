@@ -1,0 +1,112 @@
+{{> spageh}}
+{{#if errors}}
+  {{#each errors}}
+  <div class="alert alert-danger">
+    {{this.msg}}
+  </div>
+  {{/each}}
+{{/if}}
+
+{{#if error}}
+  <div class="alert alert-danger">
+    {{error}}
+  </div>
+  {{/if}}
+  {{#if success}}
+  <div class="alert alert-success">
+    {{success}}
+  </div>
+  {{/if}}
+  <br><br><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-2076057190616165",
+    enable_page_level_ads: true
+  });
+</script>
+    <div class="container"> 
+        <h4 style="text-align: center">{{title}}</h4><hr style="size: 50% color:navy"><br>
+     </div>
+<form method ="POST" action ="/register">
+<div class="container-fluid">
+      <div class= "bg bg-danger">
+      	 	 <div style= "text-align: center">
+      	 	 <h4 style= "color: navy"> TIME LEFT TO LAUNCH</h4>
+      	 	 	<b><h2 style= "color: navy" id= "count"></h2></b>
+      	 	 	</div>
+      </div>
+      </div>
+<div class="container-fluid"> 
+  <div class="form-row">
+    <div class="form-group col-md-6">
+    <label for="fullname">Full Name</label>
+    <input type="text" class="form-control"  
+id="fullname" name ="fullname" placeholder="Enter Full Name" value="{{fullname}}" required />
+</div>
+<div class="form-group col-md-6">
+<label for="sponsor">Sponsor</label>
+    <input type="text" class="form-control" 
+id="sponsor" name ="sponsor" value="{{sponsor}}" required/>
+</div>
+	</div>
+	  <div class="form-row">
+    <div class="form-group col-md-6">
+    <label for="username">username</label>
+    <input type="text" class="form-control" 
+id="username" name ="username" placeholder="Enter username" value="{{username}}"  required />
+</div>
+    <div class="form-group col-md-6">
+<label for="Email">Email address</label>
+    <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" name ="email" placeholder="Enter email" value="{{email}}"  required />
+    <small id="emailHelp" class="form-text text-muted">We'll 
+never share your email with anyone else.</small>
+</div>
+	</div>
+	<div class="form-row">
+    <div class="form-group col-md-6">
+    <label for="countrycode">Country Code</label>
+  <input type="tel" class="form-control" id="code" name ="code" placeholder="e.g +234" value="234"  required />
+</div>
+    <div class="form-group col-md-6">
+    <label for="phone">Phone Number</label>
+  <input type="tel" class="form-control" id="phone" name ="phone" placeholder="e.g 8012345678" value="{{phone}}"  required />
+</div>
+	</div>
+	<div class="form-row">
+    <div class="form-group col-md-6">
+    <label for="Pass1">Password</label>
+    <input type="password" class="form-control" 
+id="Pass1" name ="pass1" value="{{password}}"  placeholder="Password" required />
+</div>
+<div class="form-group col-md-6">
+<label for="Pass1">Confirm Password</label>
+<input type="password" class="form-control" 
+id="Pass2" name ="pass2" value="{{cpass}}"  placeholder="Password" required />
+</div>
+	</div>
+		
+	  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck" required/>
+      <label class="form-check-label" for="gridCheck">
+        I accept the terms and conditions
+      </label>
+    </div>
+  </div>
+  <p> If you don't have a sponsor, please click <a href="/fastteams"> here  </a>to see our fastest teams
+  </p><br>	 
+   <div class="form-group">
+  <button type="submit" id="registerbutton" class="btn btn-primary">Register</button><hr> 
+ </div>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-2076057190616165",
+    enable_page_level_ads: true
+  });
+</script>
+</form>
+<p> Have an account, <a href ="/login"> LOG IN.</a> Forgot password, <a href ="/passwordreset">reset it</a></p>
+</div>
+
+{{> spagef}}

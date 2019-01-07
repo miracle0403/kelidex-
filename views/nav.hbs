@@ -1,0 +1,106 @@
+<div class="wrapper">
+	<div class="sidebar" data-background-color="white" data-active-color="danger">
+
+    <!--
+		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+	-->
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="/" class="simple-text">
+                    SWIFT REVOLVER
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li class="active">
+                    <a href="/dashboard">
+                        <i class="ti-pie-chart"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+		<nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">{{title}}</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/profile">
+								<i class="ti-user"></i>
+								<p>Profile</p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/referrals">
+								<i class="ti-user"></i>
+								<p>Referrals</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/news">
+								<i class="ti-bell"></i>
+								<p>News</p>
+                            </a>
+                            <li>
+                            <a href="/logout">
+								<i class="ti-user"></i>
+								<p>Log Out</p>
+                            </a>
+                        </li>
+                        </li>
+                        <li>
+                            <a href="/webcourse">
+								<i class="ti-world"></i>
+								<p>Web Courses</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/webforum">
+								<i class="ti-light-bulb"></i>
+								<p>Web Forum</p>
+                            </a>
+                        </li>
+                        {{#if admin}}
+						<li>
+                            <a href="/manage">
+								<i class="ti-settings"></i>
+								<p>Manage Users</p>
+                            </a>
+                        </li>
+                        
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/allusers">
+								<i class="ti-user"></i>
+								<p>All Users</p>
+                            </a>
+                        </li>
+                           <li>
+                            <a href="/pending">
+								<i class="ti-money"></i>
+								<p>Payments</p>
+                            </a>
+                        </li>
+                        {{/if}}
+                    </ul>
+
+                </div>
+            </div>
+        </nav>

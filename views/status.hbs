@@ -1,0 +1,21 @@
+{{> spageh}}
+<br>
+<br>
+{{#if success}}
+	<div class="alert alert-info">
+    {{{success}}}
+  </div>
+  {{/if}}
+  
+  {{#if error}}
+	<div class="alert alert-danger">
+    {{{error}}}
+  </div>
+  {{/if}}
+  <br><br>
+  <div class="container-fluid">
+      <div style="text-align: center">
+    		<p> Go back to <a href="/dashboard">dashboard</a></p>
+ 		</div>
+  </div>
+  {{> spagef}}

@@ -1,0 +1,10 @@
+  	
+  	  //get sponsor name from database to profile page
+  db.query('SELECT sponsor FROM user WHERE user_id = ?', [currentUser], function(err, results, fields){
+    if (err) throw err;
+
+    var sponsor = results[0];
+    if (sponsor){
+      res.render('dashboard', { title: 'USER DASHBOARD', sponsor:sponsor });
+    }
+   });

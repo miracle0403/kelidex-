@@ -1,0 +1,15 @@
+{{> spageh}}
+<div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Welcome to the Matrix!</h4>
+                                
+                            </div>
+                           <p> Hello {{username}} Welcome to The Feeder Stage! You have made a wise choice!</p!>
+                             <p>Keep winning</p>
+                           
+                        </div>
+                    </div>
+                    {{> spagef}}

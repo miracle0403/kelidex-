@@ -1,0 +1,27 @@
+{{> spageh}}
+<div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">VERIFY YOUR EMAIL</h4>
+                                
+                            </div>
+							<br>
+							<br>
+							<br>
+                            <! --A mail has been sent to the email you registered with just now. If you did not get the mail, click here.-->
+                          {{#if error}}
+  <div class="alert alert-danger">
+    {{error}}
+  </div>
+  {{/if}}
+  {{#if message}}
+  <div class="alert alert-success">
+    {{message}} <a href = "/login"> click here</a>
+  </div>
+  {{/if}}
+                            </div>
+                        </div>
+                    </div>
+{{> spagef}}

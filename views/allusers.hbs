@@ -1,0 +1,77 @@
+{{> spageh}}
+{{> nav}}
+<div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 id = "users" class="title">All Users</h4>
+                                
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-striped">
+                                    <thead>
+                                   <th>User_id</th>     <th>Username</th>
+                                    	<th>Name</th>
+                                    	<th>Email</th>
+                                    	<th>Phone</th>
+                                    	<th>Date Joined</th>
+                                    </thead>
+                                    <tbody>
+                                    {{#each users}}
+                                    <tr>
+                                        	<td>{{user_id}}</td>
+                                        	<td>{{username}}</td>
+                                        	<td>{{full_name}}</td>
+                                        	<td>{{email}}</td>
+                                        	<td>{{code}}{{phone}}</td>
+                                        	<td>{{date}}</td>
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            
+                                    
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 id = "admins" class="title">All Admins</h4>
+                                
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-striped">
+                                    <thead>
+                                   <th>User_id</th>     
+                                    </thead>
+                                    <tbody>
+                                    {{#each admin}}
+                                    <tr>
+                                        	<td>{{user}}</td>
+                                        	
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            
+                                    
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </div>
+        
+                    
+{{> spagef }}

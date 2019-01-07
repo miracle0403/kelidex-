@@ -1,0 +1,161 @@
+{{> spageh}}
+{{> nav}}
+{{#if error}}
+	<div class="alert alert-danger">
+    {{error}} 
+  </div>
+{{/if}}
+  {{#if message}}
+	<div class="alert alert-info">
+    {{message}} 
+  </div>
+{{/if}}
+{{#if info}}
+	<div class="alert alert-info">
+    {{info}} 
+  </div>
+{{/if}}
+{{#if news}}
+<div class="alert alert-success" data-notify="container-fluid">
+    <form method ="POST" action ="/newsc">
+                                    <button type="submit" aria-hidden="true" class="close">×</button>
+                                    </form>
+                                
+                                    <span data-notify="message"> {{news}} click <a href = "/news" target = "_blank"> here </a>to read more.
+		</span>
+                                </div>
+{{/if}}
+      <div class="container-fluid">
+      <div class= "bg bg-danger">
+      	 	 <div style= "text-align: center">
+      	 	 <h4 style= "color: navy"><b> TIME LEFT TO LAUNCH</b></h2>
+      	 	 	<b><h4 id= "count" style ="color: red"></h2></b></div>
+      	 	 	</div>
+      </div>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-2076057190616165",
+    enable_page_level_ads: true
+  });
+</script>
+<div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <div class="icon-big icon-danger text-center">
+                                            <i class="ti-wallet"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <div class="numbers">
+                                            <p><b>MY EARNINGS SUMMARY </b></p>
+                                            <p>Feeder: {{feederearn}}</p>
+                                            <p>Feeder Sponsor bonus: {{feederbonus}}</p>
+                                                <p>TOTAL EARNED: {{total}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    <hr />
+                                    <div class="stats">
+                                        <i class="ti-reload"></i> Updated now
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <div class="icon-big icon-success text-center">
+                                            <i class="ti-angle-double-right"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <div class="numbers">
+                                            <p><b>TOTAL ENTRANCE</b></p>
+                                            <p>Feeder: {{feedentrance}} </p>
+                                            <p> TOTAL: {{totalentrance}}</p>
+                                             
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    <hr />
+                                    <div class="stats">
+                                        <i class="ti-reload"></i> Updated Now
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <div class="icon-big icon-warning text-center">
+                                            <i class="ti-medall"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <div class="numbers">
+                                            <p><b>My Feeder Tree</b></p>
+                                            {{#if tree}}
+                                            <p>
+                                              {{a}}</p>
+                                             <p> {{b}}</p>
+                                            <p>  {{c}}</p>
+                                            {{/if}}
+                                            {{#if filled}}
+                                            <p>
+                                            {{filled}}
+                                              </p>
+                                            {{/if}}
+                                            {{#if noenter}}
+        <form method ="POST" action ="/feeder">
+        <div class="container">
+        <p>You are not in the feeder Matrix... Click the button to join now.</p>
+          <button type="submit" id="feederbutton" class="btn btn-primary">Enter Feeder</button>
+        </div>
+        </form>
+        {{/if}}
+        {{#if noearn}}
+        <p> You do not have anyone in your feeder tree... Once you do, you will see them here</p>
+        {{/if}}
+                                           {{#if feedertree}}
+        {{#each feedertree}}
+           <p>{{user}}</p>
+        {{/each}}
+        {{/if}}
+                </div>
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    <hr />
+                                    <div class="stats">
+                                        <i class="ti-reload"></i> Updated now
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                </div>
+                {{#if noenter}}
+                 {{> noenter}}
+                {{/if}}
+                {{#if noearn}}
+                 {{> noearn}}
+                {{/if}}
+                {{> earning}}
+{{> spagef}}
