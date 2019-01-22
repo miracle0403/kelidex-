@@ -1,0 +1,21 @@
+.size-lg{
+	 font-size: 40px;
+ }
+ 
+ .size-md{
+	 font-size: 30px;
+ }
+ 
+ .size-sm{
+	 font-size: 20px;
+ }
+ 
+ .size-xs{
+	 font-size: 10px;
+ }
+ 
+
+.bg-crimson {
+  background-color: #DC143C !important;
+}
+

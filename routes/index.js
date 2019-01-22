@@ -30,33 +30,51 @@ var pool  = mysql.createPool({
   host: "localhost",
   user: "root",
   //password: 'swiftrevolver',
-  database: "revolver"
+  database: "keli"
 });
-/*var user = 'adminadmin';
-var email = 'mify1@yahoo.com';
-reset.sendverify( user, email )*/
-//
-//console.log( days )
-//console.log( now )
-//var admin = admin( );
-//console.log( admin ) 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  console.log(req.user);
-  
- 	res.render('index', { title: 'SWIFT REVOLVER' });		
-
+ 	res.render('index', { title: 'KELIDEX SUPRA GLOBAL SERVICES' });		
 });
+/*
+router.get('/shop', function(req, res, next) {
+ 	res.render('index', { title: 'KELIDEX SUPRA GLOBAL SERVICES' });		
+*/
+
+// get search service
+router.get('/service/:service',  function (req, res, next){
+	var service  = req.params.service;
+	//check for the service in particular
+	db.query( 'SELECT * FROM services WHERE service  = ?', [service], function ( err, results, fields){
+		if( err ) throw err;
+		var services  =  results;
+		res.render('services', {title: "ALL ",  service: service, services: services});
+	});
+}); 
 
 // get how it works
 router.get('/howitworks',  function (req, res, next){ 
-
-//console.log( req.route.path )
   res.render('howitworks', {title: "HOW IT WORKS"});
 }); 
 
-router.get('/faq',  function (req, res, next){
-  res.render('faq', {title: "FAQ"});
+// get shop
+router.get('/shop',  function (req, res, next){
+	//get  the images, price, name, id
+	db.query('SELECT DISTINCT name, product_id, category, seller FROM products WHERE status  = ? and sale  = ? ORDER BY product_id', ['in stock', 'Hot Deals'], function( err, results, fields){
+		if ( err ) throw err;
+		var hotDeal = results;
+		//get  the images, price, name, id
+		db.query('SELECT DISTINCT name, old_price, price, seller, category, product_id FROM products WHERE status  = ? and sale  = ? ORDER BY product_id', ['in stock', 'Discount'], function( err, results, fields){
+			if( err ) throw err;
+			var Discount = results;
+			db.query('SELECT DISTINCT name, category, product_id, old_price, price, seller FROM products WHERE status  = ? and sale  = ? ORDER BY product_id', ['in stock', 'normal'], function( err, results, fields){
+				if( err ) throw err;
+				var normal = results;
+			});
+		});
+	});
+	res.render('shop', {title: "SHOP"});
 });
 
 //get dashboard
@@ -986,8 +1004,6 @@ router.get('/referrals', ensureLoggedIn('/login'), function(req, res, next) {
     var sponsor = results[0].sponsor;
     db.query('SELECT username FROM user WHERE user_id = ?', [currentUser], function(err, results, fields){
       if (err) throw err; 
-      //get the referral link to home page
-      //var website = "localhost:3002/";
       var user = results[0].username;
       var reg = "/register/";
       var link = user;
@@ -1011,6 +1027,13 @@ router.get('/logout', function(req, res, next) {
   req.session.destroy();
   res.redirect('/');
 });
+
+
+// post simple search
+router.post('/simplesearch/:service',  function (req, res, next){
+	var service  =  req.params.service;
+	res.redirect('/service/service');
+}); 
 
 router.post( '/password', function ( req, res, next ){
 	var currentUser = req.session.passport.user.user_id;

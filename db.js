@@ -8,7 +8,7 @@ var pool  = mysql.createPool({
   host: "localhost",
   user: "root",
   //password: 'swiftrevolver',
-  database: "revolver"
+  database: "keli"
 });
 
 pool.getConnection( function ( err, con ){

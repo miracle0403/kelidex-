@@ -83,7 +83,7 @@ var options = {
   host: "localhost",
   user: "root",
   //password: 'swiftrevolver',
-  database: "revolver"
+  database: "keli"
 };
 
 app.use(myConnection(mysql, options, 'pool')); 
